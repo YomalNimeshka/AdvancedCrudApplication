@@ -1,3 +1,3 @@
 # AdvancedCrudApplication
- This is a new JSP/SERVLET application 
- New UI changes and new additional options and functionallites in the application
+ This is a new JSP/SERVLET application.<br/>
+ New UI changes and new additional options and functionallites in the application.
