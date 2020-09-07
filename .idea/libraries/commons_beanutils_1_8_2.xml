@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="commons-beanutils-1.8.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/CRUD body templates/commons-beanutils-1.8.2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/CRUD body templates/commons-collections-3.2.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/CRUD body templates/commons-digester-2.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/CRUD body templates/commons-javaflow-20060411.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/CRUD body templates/commons-logging-1.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/CRUD body templates/groovy-all-2.0.1.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/CRUD body templates/iText-2.1.7.js2.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/CRUD body templates/jasperreports-5.5.0.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/CRUD body templates/jasperreports-extensions-3.5.3.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/CRUD body templates/jdt-compiler-3.1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ireport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="218ca9ab-f4f7-4661-822a-ad903da70132">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from usertable;]]>
+	</queryString>
+	<field name="id" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="userName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nic" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="mobileNumber" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="gender" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="555" height="79" uuid="5e46aba7-02be-4057-a481-bad566cddf83"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[USER  TABLE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="4" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="63" y="2" width="134" height="20" uuid="32332f20-8d3a-46e7-baea-e1e8fd67d38b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[USER NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="2" width="126" height="20" uuid="3e688f60-0b41-48b5-895e-fb08af10ac15"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[NIC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="2" width="132" height="20" uuid="b50a141e-a12b-4547-b5a0-940e3e28c814"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[MOBILE NUMBER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="2" width="100" height="20" uuid="a8727309-7d6d-4f87-a248-dde73b9513ba"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Gender]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="2" width="63" height="20" uuid="c555e484-7b26-4ac3-8be0-f7acaea668d5"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[ID]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="63" height="20" uuid="7b37bd94-9c66-495b-a660-828f41fb1670"/>
+				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="63" y="0" width="134" height="20" uuid="3dfddbaa-9e4b-4ea2-91bf-2eeddb1685ba"/>
+				<textFieldExpression><![CDATA[$F{userName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="197" y="0" width="126" height="20" uuid="256f3ecd-e96d-4b84-950a-e92bedc4015d"/>
+				<textFieldExpression><![CDATA[$F{nic}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="0" width="132" height="20" uuid="98ad46f2-ca7f-4daf-ab26-957da77bcd8b"/>
+				<textFieldExpression><![CDATA[$F{mobileNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="aef5f142-db31-4b47-9657-7e1c0bcfc891"/>
+				<textFieldExpression><![CDATA[$F{gender}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
