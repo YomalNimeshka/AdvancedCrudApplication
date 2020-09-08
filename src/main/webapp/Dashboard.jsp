@@ -62,13 +62,13 @@
                     <table >
                         <thead>
 
-                        <tr class="row100 head">
-                            <th class="cell100 column1" onclick="sortTable(0)">User Name</th>
-                            <th class="cell100 column2" onclick="sortTable(1)">ID</th>
-                            <th class="cell100 column3" onclick="sortTable(2)">NIC</th>
-                            <th class="cell100 column4" onclick="sortTable(4)">Mobile Number</th>
-                            <th class="cell100 column5" onclick="sortTable(5)">Gender</th>
-                            <th class="cell100 column6">Edit/Delete</th>
+                        <tr class="row100 head" style="cursor: pointer">
+                            <th class="cell100 column1" onclick="sortTable(0)">User Name  <i class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column2" onclick="sortTable(1)">ID  <i class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column3" onclick="sortTable(2)">NIC  <i class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column4" onclick="sortTable(4)">Mobile Number  <i class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column5" onclick="sortTable(5)">Gender  <i class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column6" style="cursor: default">Edit/Delete</th>
                         </tr>
                         </thead>
                     </table>
@@ -86,7 +86,7 @@
                                         <form action="Search" method="get" >
                                             <label style="color: white" >Search:</label>
                                             <input type="text" name="search-bar" id="searchBar" value="<c:out value="${searchValue}"/>" class="form-control">
-                                            <button type="submit" value="Search" class="btn btn-primary btn-block btn-large">Search</button>
+                                            <button type="submit" value="Search" class="btn btn-primary btn-block btn-large">Search<i class="zmdi zmdi-search"></i></button>
                                         </form>
                                     </td>
                                 </tr>
@@ -122,18 +122,18 @@
                 </div>
 
                 <%--pagination--%>
-                <div class="table100-body js-pscroll">
+                <div class="">
                         <table>
-                            <th class="cell100 column1" colspan="5">
+                            <th class="" colspan="5">
                                 <table cellpadding="5" cellspacing="5">
-                                    <tr class="row100 head">
+                                    <tr class="">
                                         <c:forEach begin="1" end="${noOfPages}" var="i">
                                             <c:choose>
                                                 <c:when test="${currentPage eq i}">
-                                                    <td class="cell100 column1" style="color: white">${i}</td>
+                                                    <td class="" style="color: white">  ${i}</td>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <td class="cell100 column1" ><a href="Dashboard?page=${i}" style="color: white">${i}</a></td>
+                                                    <td class="" ><a href="Dashboard?page=${i}" style="color: white">   ${i}</a></td>
                                                 </c:otherwise>
                                             </c:choose>
                                         </c:forEach>
@@ -143,8 +143,8 @@
                         </table>
                 </div>
 
-                    <%--logout buttons--%>
-                    <div class="table100-body js-pscroll">
+                <%--logout buttons--%>
+                <div class="table100-body js-pscroll">
                         <table>
                             <th class="cell100 column1" colspan="6">
                                 <table cellpadding="5" cellspacing="5">
@@ -168,7 +168,7 @@
                                         <td>
                                             <form action="Logout" method="get">
                                                 <button>LogOut
-                                                    <i class="zmdi zmdi-arrow-back"></i>
+                                                    <i class="zmdi zmdi-power-off"></i>
                                                 </button>
                                             </form>
                                         </td>
@@ -187,6 +187,7 @@
 
             </div>
 
+            <%--for sorting the headers--%>
             <script>
                 function sortTable(n) {
                     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;

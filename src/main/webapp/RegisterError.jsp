@@ -17,6 +17,8 @@
 <script>
     alert("Registration Failed. something went wrong.")
     location.replace("Register.jsp")
+    document.body.style.background = " url('images/bg-registration-form-4.png')";
+
 </script>
 </body>
 </html>

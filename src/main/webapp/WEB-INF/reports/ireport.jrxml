@@ -27,7 +27,7 @@
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="555" height="79" uuid="5e46aba7-02be-4057-a481-bad566cddf83"/>
+				<reportElement mode="Transparent" x="0" y="0" width="555" height="79" backcolor="#FFFFFF" uuid="5e46aba7-02be-4057-a481-bad566cddf83"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="20" isItalic="true"/>
 				</textElement>
@@ -36,7 +36,7 @@
 		</band>
 	</title>
 	<pageHeader>
-		<band height="4" splitType="Stretch"/>
+		<band height="1" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
 		<band height="22" splitType="Stretch">
@@ -48,7 +48,7 @@
 				<text><![CDATA[USER NAME]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="197" y="2" width="126" height="20" uuid="3e688f60-0b41-48b5-895e-fb08af10ac15"/>
+				<reportElement mode="Transparent" x="197" y="2" width="126" height="20" backcolor="#CCCCFF" uuid="3e688f60-0b41-48b5-895e-fb08af10ac15"/>
 				<textElement>
 					<font size="12"/>
 				</textElement>

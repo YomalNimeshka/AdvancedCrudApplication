@@ -55,7 +55,10 @@ public class RegisterUserServlet extends HttpServlet {
         } else if (!mobileMatch == true) {
             RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
             rd.forward(request, response);
-        } else {
+        }else if (confirmPassword != password){
+            RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
+            rd.forward(request,response);
+        }else {
             Model model = new Model(userName, nic, mobileNumber, gender, password);
 
             DAO dao = new DAO();

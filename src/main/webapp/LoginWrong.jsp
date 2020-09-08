@@ -17,6 +17,9 @@
 <script>
     alert("Login Failed. UserName or password may have been wrong.")
     location.replace("Login.jsp")
+    document.body.style.background = " url('images/bg-registration-form-4.png')";
+
+
 </script>
 </body>
 </html>

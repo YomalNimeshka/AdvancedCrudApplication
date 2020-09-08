@@ -35,23 +35,23 @@
             </div>--%>
             <div class="form-wrapper">ID
                 <input type="text" placeholder="" name="id" class="form-control" value="<c:out value="${account.id}"/>" readonly/>
-                <%--<i class="zmdi zmdi-account"></i>--%>
+                <i class="zmdi zmdi-face"></i>
             </div>
             <div class="form-wrapper">USER NAME
                 <input type="text" placeholder="Username" maxlength="255" name="userName" class="form-control" value="<c:out value="${account.userName}"/>" readonly>
-                <%--<i class="zmdi zmdi-account"></i>--%>
+                <i class="zmdi zmdi-account"></i>
             </div>
             <div class="form-wrapper">NIC
                 <input type="text" placeholder=""  name="nic" class="form-control" value="<c:out value="${account.nic}"/>" readonly>
-                <%-- <i class="zmdi zmdi-account"></i>--%>
+                 <i class="zmdi zmdi-card"></i>
             </div>
             <div class="form-wrapper">MOBILE NUMBER
                 <input type="text" placeholder=""  name="mobileNumber" class="form-control" value="<c:out value="${account.mobileNumber}"/>" readonly>
-                <%--<i class="zmdi zmdi-account"></i>--%>
+                <i class="zmdi zmdi-phone"></i>
             </div>
             <div class="form-wrapper">GENDER
                 <input type="text" placeholder=""  name="gender" class="form-control" value="<c:out value="${account.gender}"/>" readonly>
-                <%--<i class="zmdi zmdi-account"></i>--%>
+                <i class="zmdi zmdi-male-female"></i>
             </div>
 
             <button>Delete
