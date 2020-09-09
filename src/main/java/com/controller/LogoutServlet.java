@@ -1,7 +1,6 @@
 package com.controller;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,6 +17,6 @@ public class LogoutServlet extends HttpServlet {
         HttpSession session = request.getSession();
         session.setAttribute("id", 0);
 
-        response.sendRedirect(request.getContextPath()+"/Login.jsp");
+        response.sendRedirect(request.getContextPath() + "/Login.jsp");
     }
 }

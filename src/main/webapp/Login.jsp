@@ -64,9 +64,10 @@
         margin: 3px 0px 1px 0px;
         width: 105px;
     }
+
     input[type=button] {
-        width:25px;
-        height:25px;
+        width: 25px;
+        height: 25px;
         background-image: url('images/ref.png');
         border: white;
     }
@@ -80,7 +81,7 @@
         <div class="image-holder">
             <img src="images/registration-form-3.jfif" alt="">
         </div>
-        <form action="Login" method="post"  onsubmit="return checkform(this);">
+        <form action="Login" method="post" onsubmit="return checkform(this);">
             <h3>Login</h3>
             <%--<div class="form-group">
                 <input type="text" placeholder="First Name" class="form-control">
@@ -120,7 +121,8 @@
 
             <button>Login
                 <i class="zmdi zmdi-arrow-right"></i>
-            </button><br/><br/>
+            </button>
+            <br/><br/>
             <a href="Register.jsp">Register Now!</a>
         </form>
     </div>
@@ -131,22 +133,23 @@
 
     // Captcha Script
 
-    function checkform(theform){
+    function checkform(theform) {
         var why = "";
 
-        if(theform.CaptchaInput.value == ""){
+        if (theform.CaptchaInput.value == "") {
             why += "Please Enter CAPTCHA Code.\n";
         }
-        if(theform.CaptchaInput.value != ""){
-            if(ValidCaptcha(theform.CaptchaInput.value) == false){
+        if (theform.CaptchaInput.value != "") {
+            if (ValidCaptcha(theform.CaptchaInput.value) == false) {
                 why += "The CAPTCHA Code Does Not Match.\n";
             }
         }
-        if(why != ""){
+        if (why != "") {
             alert(why);
             return false;
         }
     }
+
     function generate() {
         var a = Math.ceil(Math.random() * 9) + '';
         var b = Math.ceil(Math.random() * 9) + '';
@@ -160,18 +163,18 @@
     }
 
     // Validate input against the generated number
-    function ValidCaptcha(){
+    function ValidCaptcha() {
         var str1 = removeSpaces(document.getElementById('txtCaptcha').value);
         var str2 = removeSpaces(document.getElementById('CaptchaInput').value);
-        if (str1 == str2){
+        if (str1 == str2) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
     // Remove the spaces from the entered and generated code
-    function removeSpaces(string){
+    function removeSpaces(string) {
         return string.split(' ').join('');
     }
 </script>

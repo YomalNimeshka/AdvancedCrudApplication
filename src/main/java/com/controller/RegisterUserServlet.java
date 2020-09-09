@@ -5,12 +5,10 @@ import com.model.Model;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -45,20 +43,19 @@ public class RegisterUserServlet extends HttpServlet {
         if (userName == null || mobileNumber == null || gender == null || nic == null) {
             RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
             rd.forward(request, response);
-        }else if (!nicMatch == true){
+        } else if (!nicMatch == true) {
             RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
             rd.forward(request, response);
-        }
-        else if (!match == true) {
+        } else if (!match == true) {
             RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
             rd.forward(request, response);
         } else if (!mobileMatch == true) {
             RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
             rd.forward(request, response);
-        }else if (confirmPassword != password){
+        } else if (confirmPassword != password) {
             RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
-            rd.forward(request,response);
-        }else {
+            rd.forward(request, response);
+        } else {
             Model model = new Model(userName, nic, mobileNumber, gender, password);
 
             DAO dao = new DAO();

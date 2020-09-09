@@ -52,7 +52,9 @@
             color: white;
         }
 
-        .page a:hover:not(.active) {background-color: #ddd;}
+        .page a:hover:not(.active) {
+            background-color: #ddd;
+        }
 
         .container-table101 {
             width: 100%;
@@ -76,20 +78,19 @@
 <%--this is to make sure that once logged out there is no backtracking from the browser--%>
 <%
     try {
-        response.setHeader("Cache-Control","no-cache");
-        response.setHeader("Cache-Control","no-store");
-        response.setHeader("Pragma","no-cache");
-        response.setDateHeader ("Expires", 0);
-        if (session.getAttribute("id")==null) {
+        response.setHeader("Cache-Control", "no-cache");
+        response.setHeader("Cache-Control", "no-store");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+        if (session.getAttribute("id") == null) {
             response.sendRedirect("Login.jsp");
+        } else {
         }
-        else {}
-    }
-    catch(Exception ex) {
+    } catch (Exception ex) {
         out.println(ex);
     }
 %>
-<div  class="container-table101" style="background-image: url('images/bg-registration-form-5.jpg');">
+<div class="container-table101" style="background-image: url('images/bg-registration-form-5.jpg');">
     <div class="wrap-table100">
         <%--Search--%>
         <div class="table100-head js-pscroll">
@@ -98,10 +99,12 @@
                     <table cellpadding="5" cellspacing="5">
                         <tr>
                             <td colspan="5">
-                                <form action="Search" method="get" >
-                                    <label style="color: white" >Search:</label>
-                                    <input type="text" name="search-bar" id="searchBar" value="<c:out value="${searchValue}"/>" class="form-control">
-                                    <button type="submit" value="Search" class="btn btn-primary btn-block btn-large">Search<i class="zmdi zmdi-search"></i></button>
+                                <form action="Search" method="get">
+                                    <label style="color: white">Search:</label>
+                                    <input type="text" name="search-bar" id="searchBar"
+                                           value="<c:out value="${searchValue}"/>" class="form-control">
+                                    <button type="submit" value="Search" class="btn btn-primary btn-block btn-large">
+                                        Search<i class="zmdi zmdi-search"></i></button>
                                 </form>
                             </td>
                         </tr>
@@ -119,15 +122,20 @@
 
                 <%--table headers--%>
                 <div class="table100-head">
-                    <table >
+                    <table>
                         <thead>
 
-                        <tr class="row100 head" >
-                            <th class="cell100 column1" onclick="sortTable(0)" style="cursor: pointer">User Name  <i class="zmdi zmdi-unfold-more"></i></th>
-                            <th class="cell100 column2" onclick="sortTable(1)" style="cursor: pointer">ID  <i class="zmdi zmdi-unfold-more"></i></th>
-                            <th class="cell100 column3" onclick="sortTable(2)" style="cursor: pointer">NIC  <i class="zmdi zmdi-unfold-more"></i></th>
-                            <th class="cell100 column4" onclick="sortTable(4)" style="cursor: pointer">Mobile Number  <i class="zmdi zmdi-unfold-more"></i></th>
-                            <th class="cell100 column5" onclick="sortTable(5)" style="cursor: pointer">Gender  <i class="zmdi zmdi-unfold-more"></i></th>
+                        <tr class="row100 head">
+                            <th class="cell100 column1" onclick="sortTable(0)" style="cursor: pointer">User Name <i
+                                    class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column2" onclick="sortTable(1)" style="cursor: pointer">ID <i
+                                    class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column3" onclick="sortTable(2)" style="cursor: pointer">NIC <i
+                                    class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column4" onclick="sortTable(4)" style="cursor: pointer">Mobile Number <i
+                                    class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column5" onclick="sortTable(5)" style="cursor: pointer">Gender <i
+                                    class="zmdi zmdi-unfold-more"></i></th>
                             <th class="cell100 column6" style="cursor: default">Edit/Delete</th>
                         </tr>
                         </thead>
@@ -135,7 +143,6 @@
 
 
                 </div>
-
 
 
                 <%--dashboard data--%>
@@ -151,8 +158,11 @@
                                 <td class="cell100 column4"><c:out value="${listOfAcc.mobileNumber}"/></td>
                                 <td class="cell100 column5"><c:out value="${listOfAcc.gender}"/></td>
                                 <td class="cell100 column6">
-                                    <a class="btn btn-sm btn-success" href="Edit?id=<c:out value="${listOfAcc.id}"/>"><i class="zmdi zmdi-edit"></i>  Edit</a><br/><br/>
-                                    <a class="btn btn-sm btn-danger" href="Delete?id=<c:out value="${listOfAcc.id}"/>"><i class="zmdi zmdi-delete"></i>  Delete</a>
+                                    <a class="btn btn-sm btn-success" href="Edit?id=<c:out value="${listOfAcc.id}"/>"><i
+                                            class="zmdi zmdi-edit"></i> Edit</a><br/><br/>
+                                    <a class="btn btn-sm btn-danger"
+                                       href="Delete?id=<c:out value="${listOfAcc.id}"/>"><i
+                                            class="zmdi zmdi-delete"></i> Delete</a>
                                 </td>
 
                             </tr>
@@ -174,10 +184,11 @@
                                         <c:forEach begin="1" end="${noOfPages}" var="i">
                                             <c:choose>
                                                 <c:when test="${currentPage eq i}">
-                                                    <td class="" style="color: white"><a >${i}</a>  </td>
+                                                    <td class="" style="color: white"><a>${i}</a></td>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <td class="" ><a href="Dashboard?page=${i}" style="color: white">   ${i}</a></td>
+                                                    <td class=""><a href="Dashboard?page=${i}"
+                                                                    style="color: white"> ${i}</a></td>
                                                 </c:otherwise>
                                             </c:choose>
                                         </c:forEach>
@@ -191,45 +202,50 @@
 
                 <%--logout buttons--%>
                 <div class="table100-body js-pscroll">
-                        <table>
-                            <th class="cell100 column1" colspan="6">
-                                <table cellpadding="5" cellspacing="5">
-                                    <tr>
-                                       <%-- <a href="/DownloadPDF">Download to PDF</a>
-                                        <a href="/DownloadExcel">Download to Excel</a>--%>
-                                        <td>
-                                            <form action="DownloadPDF" method="get">
-                                                <button>Download PDF
-                                                    <i class="zmdi zmdi-download"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                           <td>
-                                               <form action="DownloadExcel" method="get">
-                                                   <button>Download Excel
-                                                       <i class="zmdi zmdi-download"></i>
-                                                   </button>
-                                               </form>
-                                           </td>
-                                        <td>
-                                            <form action="Logout" method="get">
-                                                <button>LogOut
-                                                    <i class="zmdi zmdi-power-off"></i>
-                                                </button>
-                                            </form>
-                                        </td>
-                                           <td>
-                                               <form action="Upload" method="post" enctype="multipart/form-data">
-                                                   <input id="fileAttachment" type="file" name="fileUpload" multiple="multiple" />
-                                                    <button>Upload<i class="zmdi zmdi-upload"></i>
-                                                    </button>
-                                               </form>
-                                           </td>
-                                    </tr>
-                                </table>
-                            </th>
-                        </table>
-                    </div>
+                    <table>
+                        <th class="cell100 column1" colspan="6">
+                            <table cellpadding="5" cellspacing="5">
+                                <tr>
+                                    <%-- <a href="/DownloadPDF">Download to PDF</a>
+                                     <a href="/DownloadExcel">Download to Excel</a>--%>
+                                    <td>
+                                        <form action="DownloadPDF" method="get">
+                                            <input type="hidden" name="search-bar"
+                                                   value="<c:out value="${searchValue}"/>"/>
+                                            <button>Download PDF
+                                                <i class="zmdi zmdi-download"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="DownloadExcel" method="get">
+                                            <input type="hidden" name="search-bar"
+                                                   value="<c:out value="${searchValue}"/>"/>
+                                            <button>Download Excel
+                                                <i class="zmdi zmdi-download"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="Logout" method="get">
+                                            <button>LogOut
+                                                <i class="zmdi zmdi-power-off"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form action="Upload" method="post" enctype="multipart/form-data">
+                                            <input id="fileAttachment" type="file" name="fileUpload"
+                                                   multiple="multiple"/>
+                                            <button>Upload<i class="zmdi zmdi-upload"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            </table>
+                        </th>
+                    </table>
+                </div>
 
             </div>
 
@@ -261,7 +277,7 @@
                             if (dir == "asc") {
                                 if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                                     //if so, mark as a switch and break the loop:
-                                    shouldSwitch= true;
+                                    shouldSwitch = true;
                                     break;
                                 }
                             } else if (dir == "desc") {
@@ -278,7 +294,7 @@
                             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
                             switching = true;
                             //Each time a switch is done, increase this count by 1:
-                            switchcount ++;
+                            switchcount++;
                         } else {
                             /*If no switching has been done AND the direction is "asc",
                             set the direction to "desc" and run the while loop again.*/
@@ -292,7 +308,6 @@
             </script>
 
 
-
         </div>
         <%--<form action="Logout" method="get">
             <button>LogOut
@@ -302,8 +317,6 @@
     </div>
 
 </div>
-
-
 
 
 <%--<!--===============================================================================================-->

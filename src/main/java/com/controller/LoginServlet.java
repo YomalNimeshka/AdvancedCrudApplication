@@ -5,7 +5,6 @@ import com.model.Model;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,16 +30,16 @@ public class LoginServlet extends HttpServlet {
             int id = isConnected.getId();
             System.out.println(id);
 
-            if (id==0){
+            if (id == 0) {
                 //user cannot login
                 RequestDispatcher rd = request.getRequestDispatcher("LoginWrong.jsp");
-                rd.include(request,response);
-            }else {
+                rd.include(request, response);
+            } else {
                 //user is been logged in and creating a session
                 HttpSession session = request.getSession(true);
                 session.setAttribute("accountName", userName);
                 session.setAttribute("id", model.getId());
-                response.sendRedirect(request.getContextPath()+ "/Dashboard?page=1");
+                response.sendRedirect(request.getContextPath() + "/Dashboard?page=1");
                 /*RequestDispatcher rd = request.getRequestDispatcher("/dashboard.jsp");
                 rd.forward(request,response);*/
             }

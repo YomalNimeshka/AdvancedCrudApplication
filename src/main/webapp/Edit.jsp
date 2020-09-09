@@ -22,7 +22,7 @@
 
 <body>
 
-<div class="wrapper"  style="background-image: url('images/bg-registration-form-4.png')">
+<div class="wrapper" style="background-image: url('images/bg-registration-form-4.png')">
     <div class="inner">
         <div class="image-holder">
             <img src="images/registration-form-3.jfif" alt="">
@@ -34,19 +34,24 @@
                 <input type="text" placeholder="Last Name" class="form-control">
             </div>--%>
             <div class="form-wrapper">ID
-                <input type="text" placeholder="" name="id" class="form-control" value="<c:out value="${account.id}"/>" readonly/>
+                <input type="text" placeholder="" name="id" class="form-control" value="<c:out value="${account.id}"/>"
+                       readonly/>
                 <i class="zmdi zmdi-face"></i>
             </div>
             <div class="form-wrapper">USER NAME
-                <input type="text" placeholder="Username" maxlength="255" name="userName" class="form-control" value="<c:out value="${account.userName}"/>">
+                <input type="text" placeholder="Username" maxlength="255" name="userName" class="form-control"
+                       value="<c:out value="${account.userName}"/>">
                 <i class="zmdi zmdi-account"></i>
             </div>
             <div class="form-wrapper">NIC
-                <input type="text" placeholder=""  name="nic" class="form-control" value="<c:out value="${account.nic}"/>" pattern="^([0-9]{9}[x|X|v|V]|[0-9]{12})$">
+                <input type="text" placeholder="" name="nic" class="form-control"
+                       value="<c:out value="${account.nic}"/>" pattern="^([0-9]{9}[x|X|v|V]|[0-9]{12})$">
                 <i class="zmdi zmdi-card"></i>
             </div>
             <div class="form-wrapper">MOBILE NUMBER
-                <input type="text" placeholder=""  name="mobileNumber" maxlength="15" class="form-control" value="<c:out value="${account.mobileNumber}"/>" pattern="^(?:0|94|\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|5|6|7|8)\d)\d{6}$">
+                <input type="text" placeholder="" name="mobileNumber" maxlength="15" class="form-control"
+                       value="<c:out value="${account.mobileNumber}"/>"
+                       pattern="^(?:0|94|\+94|0094)?(?:(11|21|23|24|25|26|27|31|32|33|34|35|36|37|38|41|45|47|51|52|54|55|57|63|65|66|67|81|91)(0|2|3|4|5|7|9)|7(0|1|2|5|6|7|8)\d)\d{6}$">
                 <i class="zmdi zmdi-phone"></i>
             </div>
             <div class="form-wrapper">GENDER
@@ -59,7 +64,8 @@
             </div>
             <button>Edit
                 <i class="zmdi zmdi-arrow-right"></i>
-            </button><br/><br/>
+            </button>
+            <br/><br/>
 
         </form>
     </div>

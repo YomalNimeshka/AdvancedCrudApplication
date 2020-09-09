@@ -22,41 +22,47 @@
 
 <body>
 
-<div class="wrapper"  style="background-image: url('images/bg-registration-form-4.png')">
+<div class="wrapper" style="background-image: url('images/bg-registration-form-4.png')">
     <div class="inner">
         <div class="image-holder">
             <img src="images/registration-form-3.jfif" alt="">
         </div>
-        <form action="Deleted" method="post"  onsubmit="return checkform(this);">
+        <form action="Deleted" method="post" onsubmit="return checkform(this);">
             <h3>Delete</h3>
             <%--<div class="form-group">
                 <input type="text" placeholder="First Name" class="form-control">
                 <input type="text" placeholder="Last Name" class="form-control">
             </div>--%>
             <div class="form-wrapper">ID
-                <input type="text" placeholder="" name="id" class="form-control" value="<c:out value="${account.id}"/>" readonly/>
+                <input type="text" placeholder="" name="id" class="form-control" value="<c:out value="${account.id}"/>"
+                       readonly/>
                 <i class="zmdi zmdi-face"></i>
             </div>
             <div class="form-wrapper">USER NAME
-                <input type="text" placeholder="Username" maxlength="255" name="userName" class="form-control" value="<c:out value="${account.userName}"/>" readonly>
+                <input type="text" placeholder="Username" maxlength="255" name="userName" class="form-control"
+                       value="<c:out value="${account.userName}"/>" readonly>
                 <i class="zmdi zmdi-account"></i>
             </div>
             <div class="form-wrapper">NIC
-                <input type="text" placeholder=""  name="nic" class="form-control" value="<c:out value="${account.nic}"/>" readonly>
-                 <i class="zmdi zmdi-card"></i>
+                <input type="text" placeholder="" name="nic" class="form-control"
+                       value="<c:out value="${account.nic}"/>" readonly>
+                <i class="zmdi zmdi-card"></i>
             </div>
             <div class="form-wrapper">MOBILE NUMBER
-                <input type="text" placeholder=""  name="mobileNumber" class="form-control" value="<c:out value="${account.mobileNumber}"/>" readonly>
+                <input type="text" placeholder="" name="mobileNumber" class="form-control"
+                       value="<c:out value="${account.mobileNumber}"/>" readonly>
                 <i class="zmdi zmdi-phone"></i>
             </div>
             <div class="form-wrapper">GENDER
-                <input type="text" placeholder=""  name="gender" class="form-control" value="<c:out value="${account.gender}"/>" readonly>
+                <input type="text" placeholder="" name="gender" class="form-control"
+                       value="<c:out value="${account.gender}"/>" readonly>
                 <i class="zmdi zmdi-male-female"></i>
             </div>
 
             <button>Delete
                 <i class="zmdi zmdi-delete"></i>
-            </button><br/><br/>
+            </button>
+            <br/><br/>
 
         </form>
     </div>
@@ -65,14 +71,14 @@
 
     // Captcha Script
 
-    function checkform(theform){
+    function checkform(theform) {
         var x;
         var r = confirm("Press a button! OK to delete the record \nCancel to exit");
         if (r == true) {
             x = 1;
             return Boolean(x);
         } else {
-            x =0;
+            x = 0;
             return Boolean(x);
         }
     }

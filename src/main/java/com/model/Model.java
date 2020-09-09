@@ -40,7 +40,6 @@ public class Model {
     }
 
 
-
     public int getId() {
         return id;
     }

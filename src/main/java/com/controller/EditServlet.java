@@ -5,7 +5,6 @@ import com.model.Model;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,6 +31,6 @@ public class EditServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("Edit.jsp");
         request.setAttribute("account", accountDetails);
         request.setAttribute("id", id);
-        requestDispatcher.forward(request,response);
+        requestDispatcher.forward(request, response);
     }
 }

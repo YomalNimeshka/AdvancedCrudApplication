@@ -8,10 +8,10 @@ import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
@@ -31,11 +31,14 @@ public class DownloadPDFServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        generateReport(request,response);
+        String username = request.getParameter("search-bar");
+        HttpSession session = request.getSession(false);
+        int id = (int) session.getAttribute("id");
+        generateReport(request, response,username,id);
         response.sendRedirect(request.getContextPath() + "/Dashboard?page=1");
     }
 
-    private void generateReport(HttpServletRequest request, HttpServletResponse response) {
+    private void generateReport(HttpServletRequest request, HttpServletResponse response, String username, int id) {
         List<Model> dataList;
         String reportPath;
         OutputStream outputStream;
@@ -56,7 +59,12 @@ public class DownloadPDFServlet extends HttpServlet {
             jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
             jasperData = new DAO();
-            dataList = jasperData.downloadPDF();
+            if (username == "" || username == null) {
+                dataList = jasperData.downloadPDF();
+            }else{
+                dataList = jasperData.searchOption(username, id);
+            }
+
             reportSource = new JRBeanCollectionDataSource(dataList, false);
 
             byte[] byteStream;
