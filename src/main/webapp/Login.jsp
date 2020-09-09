@@ -64,10 +64,16 @@
         margin: 3px 0px 1px 0px;
         width: 105px;
     }
+    input[type=button] {
+        width:25px;
+        height:25px;
+        background-image: url('images/ref.png');
+        border: white;
+    }
 
 </style>
 
-<body>
+<body onload="generate()">
 
 <div class="wrapper" style="background-image: url('images/bg-registration-form-4.png');">
     <div class="inner">
@@ -102,7 +108,12 @@
                     <input type="hidden" id="txtCaptcha">
                     <input type="text" name="CaptchaInput" id="CaptchaInput" size="15"><br>
 
+
                 </div>
+                <div>
+                    <input type="button" onclick="generate()">
+                </div>
+
             </div>
             <br><br>
             <!-- END CAPTCHA -->
@@ -136,16 +147,17 @@
             return false;
         }
     }
+    function generate() {
+        var a = Math.ceil(Math.random() * 9) + '';
+        var b = Math.ceil(Math.random() * 9) + '';
+        var c = Math.ceil(Math.random() * 9) + '';
+        var d = Math.ceil(Math.random() * 9) + '';
+        var e = Math.ceil(Math.random() * 9) + '';
 
-    var a = Math.ceil(Math.random() * 9)+ '';
-    var b = Math.ceil(Math.random() * 9)+ '';
-    var c = Math.ceil(Math.random() * 9)+ '';
-    var d = Math.ceil(Math.random() * 9)+ '';
-    var e = Math.ceil(Math.random() * 9)+ '';
-
-    var code = a + b + c + d + e;
-    document.getElementById("txtCaptcha").value = code;
-    document.getElementById("CaptchaDiv").innerHTML = code;
+        var code = a + b + c + d + e;
+        document.getElementById("txtCaptcha").value = code;
+        document.getElementById("CaptchaDiv").innerHTML = code;
+    }
 
     // Validate input against the generated number
     function ValidCaptcha(){
