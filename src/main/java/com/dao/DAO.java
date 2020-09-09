@@ -292,41 +292,4 @@ public class DAO {
         return dataList;
     }
 
-    public void uploadCSVFile(String filePath){
-        String sql = "insert into (userName, nic, mobileNumber, gender, password) values (?,?,?,?,?)";
-        String csvFilePath = "WEB-INF/csvFile/upload.csv";
-        int batchSize = 20;
-        try {
-            connection = DbConnection.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-
-            BufferedReader lineReader = new BufferedReader(new FileReader(filePath));
-            String lineText = null;
-
-            int count =0;
-            lineReader.readLine();
-            while ((lineText = lineReader.readLine()) != null){
-                String[] data = lineText.split(",");
-                String userName = data[0];
-                String nic = data[1];
-                String mobileNumber = data[2];
-                String gender = data[3];
-                String password = data[4];
-
-                preparedStatement.setString(1, userName);
-                preparedStatement.setString(2, nic);
-                preparedStatement.setString(3, mobileNumber);
-                preparedStatement.setString(4, gender);
-                preparedStatement.setString(5, password);
-
-
-
-                    preparedStatement.execute();
-
-            }
-        }
-        catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 }

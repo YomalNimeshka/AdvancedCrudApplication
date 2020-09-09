@@ -55,7 +55,7 @@
             </div>
 
             <button>Delete
-                <i class="zmdi zmdi-arrow-right"></i>
+                <i class="zmdi zmdi-delete"></i>
             </button><br/><br/>
 
         </form>

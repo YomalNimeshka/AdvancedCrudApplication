@@ -78,7 +78,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch">
+		<band height="31" splitType="Stretch">
 			<textField>
 				<reportElement x="0" y="0" width="63" height="20" uuid="7b37bd94-9c66-495b-a660-828f41fb1670"/>
 				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>

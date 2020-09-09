@@ -32,6 +32,28 @@
     <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
 
     <!--===============================================================================================-->
+    <style>
+
+
+        .page {
+            display: inline-block;
+        }
+
+        .page a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+        .page a.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .page a:hover:not(.active) {background-color: #ddd;}
+    </style>
 </head>
 <body>
 <%--this is to make sure that once logged out there is no backtracking from the browser--%>
@@ -62,12 +84,12 @@
                     <table >
                         <thead>
 
-                        <tr class="row100 head" style="cursor: pointer">
-                            <th class="cell100 column1" onclick="sortTable(0)">User Name  <i class="zmdi zmdi-unfold-more"></i></th>
-                            <th class="cell100 column2" onclick="sortTable(1)">ID  <i class="zmdi zmdi-unfold-more"></i></th>
-                            <th class="cell100 column3" onclick="sortTable(2)">NIC  <i class="zmdi zmdi-unfold-more"></i></th>
-                            <th class="cell100 column4" onclick="sortTable(4)">Mobile Number  <i class="zmdi zmdi-unfold-more"></i></th>
-                            <th class="cell100 column5" onclick="sortTable(5)">Gender  <i class="zmdi zmdi-unfold-more"></i></th>
+                        <tr class="row100 head" >
+                            <th class="cell100 column1" onclick="sortTable(0)" style="cursor: pointer">User Name  <i class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column2" onclick="sortTable(1)" style="cursor: pointer">ID  <i class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column3" onclick="sortTable(2)" style="cursor: pointer">NIC  <i class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column4" onclick="sortTable(4)" style="cursor: pointer">Mobile Number  <i class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column5" onclick="sortTable(5)" style="cursor: pointer">Gender  <i class="zmdi zmdi-unfold-more"></i></th>
                             <th class="cell100 column6" style="cursor: default">Edit/Delete</th>
                         </tr>
                         </thead>
@@ -122,7 +144,8 @@
                 </div>
 
                 <%--pagination--%>
-                <div class="">
+                <div class="center">
+                    <div class="page">
                         <table>
                             <th class="" colspan="5">
                                 <table cellpadding="5" cellspacing="5">
@@ -130,7 +153,7 @@
                                         <c:forEach begin="1" end="${noOfPages}" var="i">
                                             <c:choose>
                                                 <c:when test="${currentPage eq i}">
-                                                    <td class="" style="color: white">  ${i}</td>
+                                                    <td class="" style="color: white"><a >${i}</a>  </td>
                                                 </c:when>
                                                 <c:otherwise>
                                                     <td class="" ><a href="Dashboard?page=${i}" style="color: white">   ${i}</a></td>
@@ -141,6 +164,8 @@
                                 </table>
                             </th>
                         </table>
+                    </div>
+
                 </div>
 
                 <%--logout buttons--%>

@@ -27,8 +27,8 @@ public class DashboardServlet extends HttpServlet {
         int id = (int) session.getAttribute("id");
         if (session!=null && id!=0 ) {
 
-            String spageid=request.getParameter("page");
-            int page=Integer.parseInt(spageid);
+            String pageid=request.getParameter("page");
+            int page=Integer.parseInt(pageid);
             int total=5;
             String sortId = "user_id";
             if(page==1){}
