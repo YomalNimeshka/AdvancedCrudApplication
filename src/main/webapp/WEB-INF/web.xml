@@ -107,4 +107,10 @@
     <welcome-file-list>
         <welcome-file>Login.jsp</welcome-file>
     </welcome-file-list>
+
+    <context-param>
+        <description>Location to store the uploaded file</description>
+        <param-name>file-upload</param-name>
+        <param-value>C:\uploadedFiles</param-value>
+    </context-param>
 </web-app>

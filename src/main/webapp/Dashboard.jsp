@@ -219,10 +219,10 @@
                                             </form>
                                         </td>
                                            <td>
-                                               <form action="Upload" method="get">
-                                                   <button>Upload
-                                                       <i class="zmdi zmdi-upload"></i>
-                                                   </button>
+                                               <form action="Upload" method="post" enctype="multipart/form-data">
+                                                   <input id="fileAttachment" type="file" name="fileUpload" multiple="multiple" />
+                                                    <button>Upload<i class="zmdi zmdi-upload"></i>
+                                                    </button>
                                                </form>
                                            </td>
                                     </tr>
