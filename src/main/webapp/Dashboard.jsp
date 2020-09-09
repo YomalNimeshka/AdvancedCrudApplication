@@ -72,6 +72,9 @@
             flex-wrap: wrap;
             padding: 33px 30px;
         }
+        a{
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -126,16 +129,16 @@
                         <thead>
 
                         <tr class="row100 head">
-                            <th class="cell100 column1" onclick="sortTable(0)" style="cursor: pointer">User Name <i
-                                    class="zmdi zmdi-unfold-more"></i></th>
-                            <th class="cell100 column2" onclick="sortTable(1)" style="cursor: pointer">ID <i
-                                    class="zmdi zmdi-unfold-more"></i></th>
-                            <th class="cell100 column3" onclick="sortTable(2)" style="cursor: pointer">NIC <i
-                                    class="zmdi zmdi-unfold-more"></i></th>
-                            <th class="cell100 column4" onclick="sortTable(4)" style="cursor: pointer">Mobile Number <i
-                                    class="zmdi zmdi-unfold-more"></i></th>
-                            <th class="cell100 column5" onclick="sortTable(5)" style="cursor: pointer">Gender <i
-                                    class="zmdi zmdi-unfold-more"></i></th>
+                            <th class="cell100 column1" style="cursor: pointer"> <a href="Dashboard?pageId=1&sort=userName&order=${order}">User Name<i
+                                    class="zmdi zmdi-unfold-more"></i></a></th>
+                            <th class="cell100 column2" onclick="sortTable(1)" style="cursor: pointer"><a href="Dashboard?pageId=1&sort=id&order=${order}">ID<i
+                                    class="zmdi zmdi-unfold-more"></i></a></th>
+                            <th class="cell100 column3" onclick="sortTable(2)" style="cursor: pointer"><a href="Dashboard?pageId=1&sort=nic&order=${order}">NIC<i
+                                    class="zmdi zmdi-unfold-more"></i></a> </th>
+                            <th class="cell100 column4" onclick="sortTable(4)" style="cursor: pointer"><a href="Dashboard?pageId=1&sort=mobileNumber&order=${order}">Mobile Number<i
+                                    class="zmdi zmdi-unfold-more"></i></a> </th>
+                            <th class="cell100 column5" onclick="sortTable(5)" style="cursor: pointer"><a href="Dashboard?pageId=1&sort=gender&order=${order}">Gender<i
+                                    class="zmdi zmdi-unfold-more"></i></a> </th>
                             <th class="cell100 column6" style="cursor: default">Edit/Delete</th>
                         </tr>
                         </thead>
@@ -143,7 +146,6 @@
 
 
                 </div>
-
 
                 <%--dashboard data--%>
                 <div class="table100-body js-pscroll">
@@ -187,7 +189,7 @@
                                                     <td class="" style="color: white"><a>${i}</a></td>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <td class=""><a href="Dashboard?page=${i}"
+                                                    <td class=""><a href="Dashboard?pageId=${i}&sort=${columnName}"
                                                                     style="color: white"> ${i}</a></td>
                                                 </c:otherwise>
                                             </c:choose>
@@ -251,29 +253,29 @@
 
             <%--for sorting the headers--%>
             <script>
-                function sortTable(n) {
+                /*function sortTable(n) {
                     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
                     table = document.getElementById("myTable");
                     switching = true;
                     //Set the sorting direction to ascending:
                     dir = "asc";
-                    /*Make a loop that will continue until
-                    no switching has been done:*/
+                    /!*Make a loop that will continue until
+                    no switching has been done:*!/
                     while (switching) {
                         //start by saying: no switching is done:
                         switching = false;
                         rows = table.rows;
-                        /*Loop through all table rows (except the
-                        first, which contains table headers):*/
+                        /!*Loop through all table rows (except the
+                        first, which contains table headers):*!/
                         for (i = 0; i < (rows.length - 1); i++) {
                             //start by saying there should be no switching:
                             shouldSwitch = false;
-                            /*Get the two elements you want to compare,
-                            one from current row and one from the next:*/
+                            /!*Get the two elements you want to compare,
+                            one from current row and one from the next:*!/
                             x = rows[i].getElementsByTagName("TD")[n];
                             y = rows[i + 1].getElementsByTagName("TD")[n];
-                            /*check if the two rows should switch place,
-                            based on the direction, asc or desc:*/
+                            /!*check if the two rows should switch place,
+                            based on the direction, asc or desc:*!/
                             if (dir == "asc") {
                                 if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                                     //if so, mark as a switch and break the loop:
@@ -289,22 +291,22 @@
                             }
                         }
                         if (shouldSwitch) {
-                            /*If a switch has been marked, make the switch
-                            and mark that a switch has been done:*/
+                            /!*If a switch has been marked, make the switch
+                            and mark that a switch has been done:*!/
                             rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
                             switching = true;
                             //Each time a switch is done, increase this count by 1:
                             switchcount++;
                         } else {
-                            /*If no switching has been done AND the direction is "asc",
-                            set the direction to "desc" and run the while loop again.*/
+                            /!*If no switching has been done AND the direction is "asc",
+                            set the direction to "desc" and run the while loop again.*!/
                             if (switchcount == 0 && dir == "asc") {
                                 dir = "desc";
                                 switching = true;
                             }
                         }
                     }
-                }
+                }*/
 
                 localStorage.setItem('logout-event', 'logout' +Math.random());
                 window.addEventListener('storage', function (event){
@@ -314,41 +316,12 @@
                 });
 
             </script>
-
-
         </div>
-        <%--<form action="Logout" method="get">
-            <button>LogOut
-                <i class="zmdi zmdi-arrow-back"></i>
-            </button>
-        </form>--%>
     </div>
 
 </div>
 
 
-<%--<!--===============================================================================================-->
-<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/bootstrap/js/popper.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-<script src="vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->--%>
-<%--<script src="vendor/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-<script>
-    $('.js-pscroll').each(function(){
-        var ps = new PerfectScrollbar(this);
-
-        $(window).on('resize', function(){
-            ps.update();
-        })
-    });
-
-
-</script>--%>
-<!--===============================================================================================-->
-<%--<script src="js/main.js"></script>--%>
 
 </body>
 </html>

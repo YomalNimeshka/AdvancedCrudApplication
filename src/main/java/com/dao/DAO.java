@@ -193,8 +193,8 @@ public class DAO {
         }
     }
 
-    public List<Model> pagination(int start, int total, String usernameSort, int accountName) {
-        String sql = "select  * from usertable where id != '" + accountName + "' order by id desc limit " + (start - 1) + ", " + total;
+    public List<Model> pagination(int pageid, int total, String sortColumn, int userid,String order) {
+        String sql = "select  * from usertable where id != " + userid + " order by "+sortColumn+" "+order+" limit " + (pageid - 1) + ", " + total;
         List<Model> accounts = new ArrayList<Model>();
 
         try {

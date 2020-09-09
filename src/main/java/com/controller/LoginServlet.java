@@ -39,9 +39,7 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("accountName", userName);
                 session.setAttribute("id", model.getId());
-                response.sendRedirect(request.getContextPath() + "/Dashboard?page=1");
-                /*RequestDispatcher rd = request.getRequestDispatcher("/dashboard.jsp");
-                rd.forward(request,response);*/
+                response.sendRedirect(request.getContextPath() + "/Dashboard?pageId=1&sort=id&order=ASC");
             }
         } catch (SQLException e) {
             e.printStackTrace();

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 //@WebServlet(name = "DashboardServlet")
@@ -20,43 +21,48 @@ public class DashboardServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         DAO dao = new DAO();
+        List<Model> listUser;
         HttpSession session = request.getSession(false);
-        //String accountName = (String) session.getAttribute("accountName");
-        int id = (int) session.getAttribute("id");
-        if (session != null && id != 0) {
-
-            String pageid = request.getParameter("page");
-            int page = Integer.parseInt(pageid);
-            int total = 5;
-            String sortId = "user_id";
-            if (page == 1) {
+        int userId = (int) session.getAttribute("id");
+        String sort = request.getParameter("sort");
+        String order= request.getParameter("order");
+        System.out.println("order by"+ order);
+        int pageid = Integer.parseInt(request.getParameter("pageId"));
+        String columnName;
+        int total = 5;
+        if (order.equals("ASC")){
+            order="DESC";
+        }else{
+            order="ASC";
+        }
+        if (pageid == 1) {
+        } else {
+            pageid = pageid - 1;
+            pageid = pageid * total + 1;
+        }
+        if (userId != 0) {
+            if (sort.equals("userName")) {
+                columnName = "userName";
+            }else if (sort.equals("gender")) {
+                columnName = "gender";
+            }else if (sort.equals("nic")) {
+                columnName = "nic";
+            }else if (sort.equals("mobileNumber")) {
+                columnName = "mobileNumber";
             } else {
-                page = page - 1;
-                page = page * total + 1;
+               columnName = "id";
             }
+
             int noOfRecords = dao.NoOfRecords();
-            //this is requrired for pagination
             int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / total);
-
-            List<Model> listOfAcc = dao.pagination(page, total, sortId, id);
-            request.setAttribute("listOfAcc", listOfAcc);
+            listUser = dao. pagination( pageid, total, columnName, userId,order);
+            request.setAttribute("listOfAcc", listUser);
             request.setAttribute("noOfPages", noOfPages);
-            request.setAttribute("currentPage", page);
-            request.setAttribute("sortType", sortId);
-
-
-           /* List<Model> listOfAcc = null;
-            try {
-                listOfAcc = dao.displayTable();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-            request.setAttribute("listOfAcc", listOfAcc);*/
-
-            RequestDispatcher rd = request.getRequestDispatcher("Dashboard.jsp");
-            rd.forward(request, response);
+            request.setAttribute("currentPage", pageid);
+            request.setAttribute("columnName", columnName);
+            request.setAttribute("order", order);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("Dashboard.jsp");
+            dispatcher.forward(request, response);
         } else {
             System.out.println("login has to be done first");
             request.getRequestDispatcher("Login.jsp").include(request, response);
