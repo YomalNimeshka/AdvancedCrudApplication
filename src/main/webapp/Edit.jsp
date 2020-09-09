@@ -10,6 +10,7 @@
 <html>
 <head>
     <meta charset="utf-8">
+
     <title>Edit</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -18,6 +19,9 @@
 
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        history.forward();
+    </script>
 </head>
 
 <body>
@@ -70,6 +74,16 @@
         </form>
     </div>
 </div>
+<script>
+/*    document.addEventListener('DOMContentLoaded',   function() {
+        if(document.referrer != 'http://localhost:8080/CRUD'){
+            history.pushState(null, null, 'http://localhost:8080/CRUD/Dashboard?page=1');
+            window.addEventListener('popstate', function () {
+                history.pushState(null, null, 'http://localhost:8080/CRUD/Dashboard?page=1');
+            });
+        }
+    });*/
+</script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

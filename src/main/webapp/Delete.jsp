@@ -18,6 +18,9 @@
 
     <!-- STYLE CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <script>
+        history.forward();
+    </script>
 </head>
 
 <body>
@@ -82,6 +85,8 @@
             return Boolean(x);
         }
     }
+
+
 </script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
