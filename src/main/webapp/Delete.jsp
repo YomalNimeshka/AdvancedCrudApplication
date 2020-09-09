@@ -27,7 +27,7 @@
         <div class="image-holder">
             <img src="images/registration-form-3.jfif" alt="">
         </div>
-        <form action="Deleted" method="post">
+        <form action="Deleted" method="post"  onsubmit="return checkform(this);">
             <h3>Delete</h3>
             <%--<div class="form-group">
                 <input type="text" placeholder="First Name" class="form-control">
@@ -61,6 +61,22 @@
         </form>
     </div>
 </div>
+<script type="text/javascript">
+
+    // Captcha Script
+
+    function checkform(theform){
+        var x;
+        var r = confirm("Press a button! OK to delete the record \nCancel to exit");
+        if (r == true) {
+            x = 1;
+            return Boolean(x);
+        } else {
+            x =0;
+            return Boolean(x);
+        }
+    }
+</script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
