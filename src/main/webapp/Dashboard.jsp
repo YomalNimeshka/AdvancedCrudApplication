@@ -53,6 +53,23 @@
         }
 
         .page a:hover:not(.active) {background-color: #ddd;}
+
+        .container-table101 {
+            width: 100%;
+            min-height: 200px;
+            /*background: #fff;*/
+
+
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 33px 30px;
+        }
     </style>
 </head>
 <body>
