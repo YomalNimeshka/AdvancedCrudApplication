@@ -189,7 +189,7 @@
                                                     <td class="" style="color: white"><a>${i}</a></td>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <td class=""><a href="Dashboard?pageId=${i}&sort=${columnName}"
+                                                    <td class=""><a href="Dashboard?pageId=${i}&sort=${columnName}&order=${order}"
                                                                     style="color: white"> ${i}</a></td>
                                                 </c:otherwise>
                                             </c:choose>
