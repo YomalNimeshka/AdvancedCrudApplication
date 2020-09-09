@@ -72,7 +72,28 @@
         out.println(ex);
     }
 %>
-
+<div  class="container-table101" style="background-image: url('images/bg-registration-form-5.jpg');">
+    <div class="wrap-table100">
+        <%--Search--%>
+        <div class="table100-head js-pscroll">
+            <table>
+                <th class="cell100 column1" colspan="5">
+                    <table cellpadding="5" cellspacing="5">
+                        <tr>
+                            <td colspan="5">
+                                <form action="Search" method="get" >
+                                    <label style="color: white" >Search:</label>
+                                    <input type="text" name="search-bar" id="searchBar" value="<c:out value="${searchValue}"/>" class="form-control">
+                                    <button type="submit" value="Search" class="btn btn-primary btn-block btn-large">Search<i class="zmdi zmdi-search"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                </th>
+            </table>
+        </div>
+    </div>
+</div>
 <div class="limiter">
 
     <div class="container-table100" style="background-image: url('images/bg-registration-form-4.png');">
@@ -98,24 +119,7 @@
 
                 </div>
 
-                <%--Search--%>
-                <div class="table100-body js-pscroll">
-                    <table>
-                        <th class="cell100 column1" colspan="5">
-                            <table cellpadding="5" cellspacing="5">
-                                <tr>
-                                    <td colspan="5">
-                                        <form action="Search" method="get" >
-                                            <label style="color: white" >Search:</label>
-                                            <input type="text" name="search-bar" id="searchBar" value="<c:out value="${searchValue}"/>" class="form-control">
-                                            <button type="submit" value="Search" class="btn btn-primary btn-block btn-large">Search<i class="zmdi zmdi-search"></i></button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            </table>
-                        </th>
-                    </table>
-                </div>
+
 
                 <%--dashboard data--%>
                 <div class="table100-body js-pscroll">
