@@ -305,6 +305,14 @@
                         }
                     }
                 }
+
+                localStorage.setItem('logout-event', 'logout' +Math.random());
+                window.addEventListener('storage', function (event){
+                   if (event.key == 'logout-event'){
+                       location.replace("Login.jsp");
+                   }
+                });
+
             </script>
 
 
