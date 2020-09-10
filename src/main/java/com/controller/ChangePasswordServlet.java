@@ -1,6 +1,7 @@
 package com.controller;
 
-import com.dao.DAO;
+import com.dao.DaoModel;
+import com.dao.DaoModel;
 import com.model.Model;
 
 import javax.servlet.RequestDispatcher;
@@ -36,7 +37,7 @@ public class ChangePasswordServlet extends HttpServlet {
             rd.forward(request, response);
         } else {
             Model model = new Model(userId,password,0);
-            DAO dao = new DAO();
+            DaoModel dao = new DaoModel();
             dao.updatePassword(model);
             RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
             rd.forward(request, response);

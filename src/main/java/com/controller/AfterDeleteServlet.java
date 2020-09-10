@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.dao.DAO;
+import com.dao.DaoModel;
 import com.model.Model;
 
 import javax.servlet.ServletException;
@@ -13,11 +13,11 @@ import java.io.IOException;
 public class AfterDeleteServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Model model = new Model();
-        DAO dao = new DAO();
+        DaoModel daoModel = new DaoModel();
         int id = Integer.parseInt(request.getParameter("id"));
         model.setId(id);
 
-        dao.deleteAccount(model);
+        daoModel.deleteAccount(model);
         response.sendRedirect(request.getContextPath() + "/Dashboard?pageId=1&sort=id&order=1");
     }
 

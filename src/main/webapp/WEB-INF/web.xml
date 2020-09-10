@@ -121,4 +121,18 @@
         <param-name>file-upload</param-name>
         <param-value>C:\uploadedFiles</param-value>
     </context-param>
+
+
+    <filter>
+        <filter-name>DemoJspFilter</filter-name>
+        <filter-class>com.controller.JspFilter</filter-class>
+        <init-param>
+            <param-name>init-param</param-name>
+            <param-value>hgt</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>DemoJspFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

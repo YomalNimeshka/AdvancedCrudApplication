@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.dao.DAO;
+import com.dao.DaoModel;
 import com.model.Model;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
@@ -46,7 +46,7 @@ public class DownloadExcelServlet extends HttpServlet {
         JasperReport jasperReport;
         JasperDesign jasperDesign;
         JRDataSource reportSource;
-        DAO jasperData;
+        DaoModel jasperData;
         Map reportParameters;
 
         try {
@@ -58,7 +58,7 @@ public class DownloadExcelServlet extends HttpServlet {
             jasperDesign = JRXmlLoader.load(reportPath);
             jasperReport = JasperCompileManager.compileReport(jasperDesign);
 
-            jasperData = new DAO();
+            jasperData = new DaoModel();
             if (username == "" || username == null) {
                 dataList = jasperData.downloadPDF();
             }else{

@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.dao.DAO;
+import com.dao.DaoModel;
 import com.model.Model;
 import com.util.EmailSend;
 
@@ -73,7 +73,7 @@ public class RegisterUserServlet extends HttpServlet {
         } else {
             try{
                 Model model = new Model(userName, nic, mobileNumber, gender, password,1);
-                DAO dao = new DAO();
+                DaoModel dao = new DaoModel();
                 EmailSend E = new EmailSend();
                 dao.registerUser(model);
                 E.send(mail,"Change password by login","http://localhost:8081/CRUD/");

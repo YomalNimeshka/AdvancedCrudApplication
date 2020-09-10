@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.dao.DAO;
+import com.dao.DaoModel;
 import com.model.Model;
 
 import javax.servlet.RequestDispatcher;
@@ -19,7 +19,7 @@ public class SearchServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DAO dao = new DAO();
+        DaoModel daoModel = new DaoModel();
         String username = request.getParameter("search-bar");
         HttpSession session = request.getSession(false);
         int id = (int) session.getAttribute("id");
@@ -31,7 +31,7 @@ public class SearchServlet extends HttpServlet {
             //if the logged in user name is equal to the searched name then dont display that name
 
 
-            List<Model> listOfAcc = dao.searchOption(username, id);
+            List<Model> listOfAcc = daoModel.searchOption(username, id);
             request.setAttribute("listOfAcc", listOfAcc);
             request.setAttribute("searchValue", username);
             RequestDispatcher rd = request.getRequestDispatcher("Dashboard.jsp");

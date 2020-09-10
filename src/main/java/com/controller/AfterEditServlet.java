@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.dao.DAO;
+import com.dao.DaoModel;
 import com.model.Model;
 
 import javax.servlet.ServletException;
@@ -26,8 +26,8 @@ public class AfterEditServlet extends HttpServlet {
         model.setMobileNumber(mobileNumber);
         model.setGender(gender);
 
-        DAO dao = new DAO();
-        dao.updateAccount(model);
+        DaoModel daoModel = new DaoModel();
+        daoModel.updateAccount(model);
 
 
         response.sendRedirect(request.getContextPath() + "/Dashboard?pageId=1&sort=id&order=1");

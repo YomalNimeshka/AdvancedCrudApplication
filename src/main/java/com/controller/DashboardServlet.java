@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.dao.DAO;
+import com.dao.DaoModel;
 import com.model.Model;
 
 import javax.servlet.*;
@@ -20,13 +20,13 @@ public class DashboardServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DAO dao = new DAO();
+        DaoModel dao = new DaoModel();
         List<Model> listUser;
         HttpSession session = request.getSession(false);
         int userId = (int) session.getAttribute("id");
         String sort = request.getParameter("sort");
         int order= Integer.parseInt(request.getParameter("order"));
-        System.out.println("order by"+ order);
+        //System.out.println("order by"+ order);
         int pageid = Integer.parseInt(request.getParameter("pageId"));
         String columnName;
         String SortType;
@@ -63,6 +63,8 @@ public class DashboardServlet extends HttpServlet {
             request.setAttribute("currentPage", pageid);
             request.setAttribute("columnName", columnName);
             request.setAttribute("order", order);
+
+
             RequestDispatcher dispatcher = request.getRequestDispatcher("Dashboard.jsp");
             dispatcher.forward(request, response);
         } else {

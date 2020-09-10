@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.dao.DAO;
+import com.dao.DaoModel;
 import com.model.Model;
 
 import javax.servlet.RequestDispatcher;
@@ -18,7 +18,7 @@ public class DeleteServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Model model = new Model();
-        DAO dao = new DAO();
+        DaoModel daoModel = new DaoModel();
 
         //String username = request.getParameter("userName");
         int id = Integer.parseInt(request.getParameter("id"));
@@ -27,7 +27,7 @@ public class DeleteServlet extends HttpServlet {
         // model.setUserName(username);
         model.setId(id);
 
-        Model account = dao.editAccountDetails(model);
+        Model account = daoModel.editAccountDetails(model);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("Delete.jsp");
         request.setAttribute("account", account);

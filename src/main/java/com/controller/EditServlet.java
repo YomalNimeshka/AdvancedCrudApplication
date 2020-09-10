@@ -1,13 +1,12 @@
 package com.controller;
 
-import com.dao.DAO;
+import com.dao.DaoModel;
 import com.model.Model;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 //@WebServlet(name = "EditServlet")
@@ -29,8 +28,8 @@ public class EditServlet extends HttpServlet {
         //System.out.println(username);
         model.setId(id);
 
-        DAO dao = new DAO();
-        Model accountDetails = dao.editAccountDetails(model);
+        DaoModel daoModel = new DaoModel();
+        Model accountDetails = daoModel.editAccountDetails(model);
 
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("Edit.jsp");
         request.setAttribute("account", accountDetails);

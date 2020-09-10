@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.dao.DAO;
+import com.dao.DaoModel;
 import com.model.Model;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -63,7 +63,7 @@ public class UploadServlet extends HttpServlet {
     }
 
     public void uploadFileToDb(HttpServletRequest request, HttpServletResponse response, String name) throws ServletException, IOException {
-        DAO dao = new DAO();
+        DaoModel daoModel = new DaoModel();
         //getting the file saved file path to upload to database
         File fileDir = new File(UPLOAD_DIRECTORY);
         String filepath = fileDir.getAbsolutePath() + "/" + name;
@@ -83,12 +83,15 @@ public class UploadServlet extends HttpServlet {
                 String gender = data[3];
                 String password = data[4];
                 Model model = new Model(userName, nic, mobileNumber, gender, password);
-                dao.registerUser(model);
+                daoModel.registerUser(model);
 
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+
         //System.out.println("csv uploaded");
         response.sendRedirect(request.getContextPath() + "/Dashboard?page=1");
     }

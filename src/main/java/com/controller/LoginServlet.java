@@ -1,6 +1,8 @@
 package com.controller;
 
-import com.dao.DAO;
+import com.dao.DaoAuditTrace;
+import com.dao.DaoModel;
+import com.model.AuditModel;
 import com.model.Model;
 
 import javax.servlet.RequestDispatcher;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Date;
 
 //@WebServlet(name = "LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -23,12 +26,14 @@ public class LoginServlet extends HttpServlet {
         model.setUserName(userName);
         model.setPassword(password);
 
-        DAO dao = new DAO();
+        DaoModel dao = new DaoModel();
+        AuditModel auditModel = new AuditModel();
+        DaoAuditTrace daoAuditTrace = new DaoAuditTrace();
         try {
             Model isConnected = dao.loginUser(model);
             int id = isConnected.getId();
             int tempId=isConnected.getTempPass();
-            System.out.println(id);
+            //System.out.println(id);
             if (id == 0) {
                 //user cannot login
                 RequestDispatcher rd = request.getRequestDispatcher("LoginWrong.jsp");
@@ -44,6 +49,25 @@ public class LoginServlet extends HttpServlet {
                 HttpSession session = request.getSession(true);
                 session.setAttribute("accountName", userName);
                 session.setAttribute("id", id);
+
+                //audit trace part
+                String clientURI = request.getRequestURI();
+                //System.out.println(id);
+                auditModel.setId(id);
+                auditModel.setUri(clientURI);
+                String time = new Date().toString();
+                auditModel.setTimeStamp(time);
+
+                System.out.println(auditModel.getId());
+                System.out.println(auditModel.getTimeStamp());
+                System.out.println(auditModel.getUri());
+                // Print client URI and time stamp
+                //System.out.println("Client URI: "+ clientURI + ", Time Stamp: "
+                //        + new Date().toString());
+                // Pass data to the filter chain
+                daoAuditTrace.sendAudoitTraceToDb(auditModel);
+
+
                 response.sendRedirect(request.getContextPath() + "/Dashboard?pageId=1&sort=id&order=1");
             }
         } catch (SQLException e) {

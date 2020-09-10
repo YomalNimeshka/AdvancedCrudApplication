@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DAO {
+public class DaoModel {
     static Connection connection;
     static int isLoggedIn;
     int noOfRecords;
@@ -55,7 +55,7 @@ public class DAO {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             if (resultSet.next()) {
-                System.out.println("User can login");
+               // System.out.println("User can login");
                 int id = resultSet.getInt("id");
                 int tempId = resultSet.getInt("tempPass");
                 model.setId(id);
