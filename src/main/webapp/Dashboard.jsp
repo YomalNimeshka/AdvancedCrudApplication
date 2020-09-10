@@ -72,7 +72,8 @@
             flex-wrap: wrap;
             padding: 33px 30px;
         }
-        a{
+
+        a {
             color: white;
         }
     </style>
@@ -129,16 +130,33 @@
                         <thead>
 
                         <tr class="row100 head">
-                            <th class="cell100 column1" style="cursor: pointer"> <a href="Dashboard?pageId=1&sort=userName&order=${order}">User Name<i
-                                    class="zmdi zmdi-unfold-more"></i></a></th>
-                            <th class="cell100 column2" onclick="sortTable(1)" style="cursor: pointer"><a href="Dashboard?pageId=1&sort=id&order=${order}">ID<i
-                                    class="zmdi zmdi-unfold-more"></i></a></th>
-                            <th class="cell100 column3" onclick="sortTable(2)" style="cursor: pointer"><a href="Dashboard?pageId=1&sort=nic&order=${order}">NIC<i
-                                    class="zmdi zmdi-unfold-more"></i></a> </th>
-                            <th class="cell100 column4" onclick="sortTable(4)" style="cursor: pointer"><a href="Dashboard?pageId=1&sort=mobileNumber&order=${order}">Mobile Number<i
-                                    class="zmdi zmdi-unfold-more"></i></a> </th>
-                            <th class="cell100 column5" onclick="sortTable(5)" style="cursor: pointer"><a href="Dashboard?pageId=1&sort=gender&order=${order}">Gender<i
-                                    class="zmdi zmdi-unfold-more"></i></a> </th>
+
+                            <th class="cell100 column1" style="cursor: pointer">
+                                <c:set var="orders" scope="session" value="${order+1}"/>
+                                <a href="Dashboard?pageId=1&sort=userName&order=${orders}">User Name
+                                    <i class="zmdi zmdi-unfold-more"></i>
+                                </a>
+                            </th>
+                            <th class="cell100 column2" style="cursor: pointer">
+                                <a href="Dashboard?pageId=1&sort=id&order=${orders}">ID
+                                    <i class="zmdi zmdi-unfold-more"></i>
+                                </a>
+                            </th>
+                            <th class="cell100 column3" style="cursor: pointer">
+                                <a href="Dashboard?pageId=1&sort=nic&order=${orders}">NIC
+                                    <i class="zmdi zmdi-unfold-more"></i>
+                                </a>
+                            </th>
+                            <th class="cell100 column4" style="cursor: pointer">
+                                <a href="Dashboard?pageId=1&sort=mobileNumber&order=${orders}">Mobile Number
+                                    <i class="zmdi zmdi-unfold-more"></i>
+                                </a>
+                            </th>
+                            <th class="cell100 column5" style="cursor: pointer">
+                                <a href="Dashboard?pageId=1&sort=gender&order=${orders}">Gender
+                                    <i class="zmdi zmdi-unfold-more"></i>
+                                </a>
+                            </th>
                             <th class="cell100 column6" style="cursor: default">Edit/Delete</th>
                         </tr>
                         </thead>
@@ -189,8 +207,10 @@
                                                     <td class="" style="color: white"><a>${i}</a></td>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <td class=""><a href="Dashboard?pageId=${i}&sort=${columnName}&order=${order}"
-                                                                    style="color: white"> ${i}</a></td>
+                                                    <c:set var="orders" scope="session" value="${order+2}"/>
+                                                    <td class=""><a
+                                                            href="Dashboard?pageId=${i}&sort=${columnName}&order=${orders}"
+                                                            style="color: white"> ${i}</a></td>
                                                 </c:otherwise>
                                             </c:choose>
                                         </c:forEach>
@@ -308,11 +328,11 @@
                     }
                 }*/
 
-                localStorage.setItem('logout-event', 'logout' +Math.random());
-                window.addEventListener('storage', function (event){
-                   if (event.key == 'logout-event'){
-                       location.replace("Login.jsp");
-                   }
+                localStorage.setItem('logout-event', 'logout' + Math.random());
+                window.addEventListener('storage', function (event) {
+                    if (event.key == 'logout-event') {
+                        location.replace("Login.jsp");
+                    }
                 });
 
             </script>
@@ -320,7 +340,6 @@
     </div>
 
 </div>
-
 
 
 </body>

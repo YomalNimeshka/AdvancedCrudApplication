@@ -25,15 +25,17 @@ public class DashboardServlet extends HttpServlet {
         HttpSession session = request.getSession(false);
         int userId = (int) session.getAttribute("id");
         String sort = request.getParameter("sort");
-        String order= request.getParameter("order");
+        int order= Integer.parseInt(request.getParameter("order"));
         System.out.println("order by"+ order);
         int pageid = Integer.parseInt(request.getParameter("pageId"));
         String columnName;
+        String SortType;
         int total = 5;
-        if (order.equals("ASC")){
-            order="DESC";
+
+        if ((order%2)==1){
+            SortType="DESC";
         }else{
-            order="ASC";
+            SortType="ASC";
         }
         if (pageid == 1) {
         } else {
@@ -55,7 +57,7 @@ public class DashboardServlet extends HttpServlet {
 
             int noOfRecords = dao.NoOfRecords();
             int noOfPages = (int) Math.ceil(noOfRecords * 1.0 / total);
-            listUser = dao. pagination( pageid, total, columnName, userId,order);
+            listUser = dao. pagination( pageid, total, columnName, userId,SortType);
             request.setAttribute("listOfAcc", listUser);
             request.setAttribute("noOfPages", noOfPages);
             request.setAttribute("currentPage", pageid);
