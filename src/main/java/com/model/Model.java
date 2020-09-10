@@ -7,6 +7,7 @@ public class Model {
     private String mobileNumber;
     private String gender;
     private String password;
+    private int tempPass;
 
     public Model() {
     }
@@ -24,6 +25,15 @@ public class Model {
 
     }
 
+    public Model( String userName, String nic, String mobileNumber, String gender, String password, int tempPass) {
+        this.userName = userName;
+        this.nic = nic;
+        this.mobileNumber = mobileNumber;
+        this.gender = gender;
+        this.password = password;
+        this.tempPass = tempPass;
+    }
+
     public Model(String userName, String nic, String mobileNumber, String gender, String password) {
         this.userName = userName;
         this.nic = nic;
@@ -39,6 +49,11 @@ public class Model {
         this.gender = gender;
     }
 
+    public Model(int id, String password, int tempPass) {
+        this.id = id;
+        this.password = password;
+        this.tempPass = tempPass;
+    }
 
     public int getId() {
         return id;
@@ -86,6 +101,14 @@ public class Model {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getTempPass() {
+        return tempPass;
+    }
+
+    public void setTempPass(int tempPass) {
+        this.tempPass = tempPass;
     }
 
     @Override

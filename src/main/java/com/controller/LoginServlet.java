@@ -26,19 +26,24 @@ public class LoginServlet extends HttpServlet {
         DAO dao = new DAO();
         try {
             Model isConnected = dao.loginUser(model);
-
             int id = isConnected.getId();
+            int tempId=isConnected.getTempPass();
             System.out.println(id);
-
             if (id == 0) {
                 //user cannot login
                 RequestDispatcher rd = request.getRequestDispatcher("LoginWrong.jsp");
                 rd.include(request, response);
-            } else {
+            } else if(tempId==1){
+                HttpSession session = request.getSession(true);
+                session.setAttribute("id", id);
+                RequestDispatcher rd = request.getRequestDispatcher("ChangePassword.jsp");
+                rd.include(request, response);
+
+            }else {
                 //user is been logged in and creating a session
                 HttpSession session = request.getSession(true);
                 session.setAttribute("accountName", userName);
-                session.setAttribute("id", model.getId());
+                session.setAttribute("id", id);
                 response.sendRedirect(request.getContextPath() + "/Dashboard?pageId=1&sort=id&order=1");
             }
         } catch (SQLException e) {

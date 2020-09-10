@@ -20,7 +20,7 @@ public class RegisterUserServlet extends HttpServlet {
         String mobileNumber = request.getParameter("mobileNumber");
         String gender = request.getParameter("gender");
         String password = request.getParameter("password");
-        String confirmPassword = request.getParameter("ConfirmPassword");
+        String confirmPassword = request.getParameter("confirmPassword");
 
         // matching nic
         Pattern patt = Pattern.compile("^([0-9]{9}[x|X|v|V]|[0-9]{12})$");
@@ -52,15 +52,13 @@ public class RegisterUserServlet extends HttpServlet {
         } else if (!mobileMatch == true) {
             RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
             rd.forward(request, response);
-        } else if (confirmPassword != password) {
+        } else if (!confirmPassword.equals(password)) {
             RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
             rd.forward(request, response);
         } else {
-            Model model = new Model(userName, nic, mobileNumber, gender, password);
-
+            Model model = new Model(userName, nic, mobileNumber, gender, password,1);
             DAO dao = new DAO();
             dao.registerUser(model);
-
             RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
             rd.forward(request, response);
         }

@@ -14,11 +14,9 @@ public class DAO {
     int noOfRecords;
 
     public void registerUser(Model model) {
-        String sql = "insert into usertable (userName, nic, mobileNumber, gender, password) values (?, ?, ?, ?, ?)";
+        String sql = "insert into usertable (userName, nic, mobileNumber, gender, password,tempPass) values (?, ?, ?, ?, ?,?)";
         try {
             connection = DbConnection.getConnection();
-            HashingFunction hashPassword = new HashingFunction();
-
             //hashing the password
             String userPasssword = model.getPassword();
             String hashedPassword = HashingFunction.convertByteToString(HashingFunction.createHash(userPasssword));
@@ -29,6 +27,7 @@ public class DAO {
             preparedStatement.setString(3, model.getMobileNumber());
             preparedStatement.setString(4, model.getGender());
             preparedStatement.setString(5, hashedPassword);
+            preparedStatement.setInt(6,model.getTempPass());
             preparedStatement.executeUpdate();
             System.out.println("Data has been send to db");
             connection.close();
@@ -57,8 +56,10 @@ public class DAO {
 
             if (resultSet.next()) {
                 System.out.println("User can login");
-                int result = resultSet.getInt("id");
-                model.setId(result);
+                int id = resultSet.getInt("id");
+                int tempId = resultSet.getInt("tempPass");
+                model.setId(id);
+                model.setTempPass(tempId);
 
 
             } else {
@@ -289,5 +290,28 @@ public class DAO {
         // System.out.println(dataList);
         return dataList;
     }
+
+    public void updatePassword(Model model){
+        String sql = "update usertable set password = ?, tempPass = ? where id = ?";
+
+        try {
+            connection = DbConnection.getConnection();
+            //hashing the password
+            String userPasssword = model.getPassword();
+            String hashedPassword = HashingFunction.convertByteToString(HashingFunction.createHash(userPasssword));
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, hashedPassword);
+            preparedStatement.setInt(2, model.getTempPass());
+            preparedStatement.setInt(3, model.getId());
+            preparedStatement.executeUpdate();
+            System.out.println("password has been updated ");
+            connection.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("password could not be updated");
+        }
+    }
+
+
 
 }

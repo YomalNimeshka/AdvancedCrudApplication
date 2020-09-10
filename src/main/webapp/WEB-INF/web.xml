@@ -52,6 +52,10 @@
         <servlet-name>UploadServlet</servlet-name>
         <servlet-class>com.controller.UploadServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <servlet-class>com.controller.ChangePasswordServlet</servlet-class>
+    </servlet>
 
 
     <servlet-mapping>
@@ -101,6 +105,10 @@
     <servlet-mapping>
         <servlet-name>UploadServlet</servlet-name>
         <url-pattern>/Upload</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ChangePasswordServlet</servlet-name>
+        <url-pattern>/ChangePasswordServlet</url-pattern>
     </servlet-mapping>
 
 
