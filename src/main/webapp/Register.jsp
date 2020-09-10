@@ -95,6 +95,10 @@
                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}" required>
                 <i class="zmdi zmdi-lock"></i>
             </div>
+            <div class="form-wrapper">
+                <input type="text" maxlength="255" placeholder="mail" name="mail" class="form-control" patten="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+                <i class="zmdi zmdi-account"></i>
+            </div>
             <button>Register
                 <i class="zmdi zmdi-arrow-right"></i>
             </button>

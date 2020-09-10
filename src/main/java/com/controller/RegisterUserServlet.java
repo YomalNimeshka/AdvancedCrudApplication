@@ -2,7 +2,10 @@ package com.controller;
 
 import com.dao.DAO;
 import com.model.Model;
+import com.util.EmailSend;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -21,11 +24,18 @@ public class RegisterUserServlet extends HttpServlet {
         String gender = request.getParameter("gender");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
+        String mail = request.getParameter("mail");
+
 
         // matching nic
         Pattern patt = Pattern.compile("^([0-9]{9}[x|X|v|V]|[0-9]{12})$");
         Matcher nicM = patt.matcher(nic);
         boolean nicMatch = nicM.matches();
+
+        // matching nic
+        Pattern pattMail = Pattern.compile("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        Matcher pMail = pattMail.matcher(mail);
+        boolean mailMatch = pMail.matches();
 
 
         //backend validation for password
@@ -46,7 +56,12 @@ public class RegisterUserServlet extends HttpServlet {
         } else if (!nicMatch == true) {
             RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
             rd.forward(request, response);
-        } else if (!match == true) {
+        }
+        else if (!mailMatch == true) {
+            System.out.println("error");
+            RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
+            rd.forward(request, response);
+        }else if (!match == true) {
             RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
             rd.forward(request, response);
         } else if (!mobileMatch == true) {
@@ -56,11 +71,19 @@ public class RegisterUserServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher("RegisterError.jsp");
             rd.forward(request, response);
         } else {
-            Model model = new Model(userName, nic, mobileNumber, gender, password,1);
-            DAO dao = new DAO();
-            dao.registerUser(model);
-            RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
-            rd.forward(request, response);
+            try{
+                Model model = new Model(userName, nic, mobileNumber, gender, password,1);
+                DAO dao = new DAO();
+                EmailSend E = new EmailSend();
+                dao.registerUser(model);
+                E.send(mail,"Change password by login","http://localhost:8081/CRUD/");
+                RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
+                rd.forward(request, response);
+            } catch (AddressException e) {
+                e.printStackTrace();
+            } catch (MessagingException e) {
+                e.printStackTrace();
+            }
         }
 
 
