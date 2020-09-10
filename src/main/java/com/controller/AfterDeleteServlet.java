@@ -18,7 +18,7 @@ public class AfterDeleteServlet extends HttpServlet {
         model.setId(id);
 
         dao.deleteAccount(model);
-        response.sendRedirect(request.getContextPath() + "/Dashboard?page=1");
+        response.sendRedirect(request.getContextPath() + "/Dashboard?pageId=1&sort=id&order=1");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
