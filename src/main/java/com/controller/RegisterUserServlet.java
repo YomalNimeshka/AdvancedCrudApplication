@@ -76,7 +76,7 @@ public class RegisterUserServlet extends HttpServlet {
                 DaoModel dao = new DaoModel();
                 EmailSend E = new EmailSend();
                 dao.registerUser(model);
-                E.send(mail,"Change password by login","http://localhost:8081/CRUD/");
+                E.send(mail,"Change password by login","http://localhost:8080/CRUD/");
                 RequestDispatcher rd = request.getRequestDispatcher("Login.jsp");
                 rd.forward(request, response);
             } catch (AddressException e) {

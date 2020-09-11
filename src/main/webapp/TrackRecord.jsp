@@ -10,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en">
 <head>
-    <title>Dashboard</title>
+    <title>Record</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--===============================================================================================-->
@@ -94,10 +94,10 @@
         out.println(ex);
     }
 %>
-<div class="container-table101" style="background-image: url('images/bg-registration-form-5.jpg');">
+<%--<div class="container-table101" style="background-image: url('images/bg-registration-form-5.jpg');">
     <div class="wrap-table100">
-        <%--Search--%>
-        <div class="table100-head js-pscroll">
+        &lt;%&ndash;Search&ndash;%&gt;
+        &lt;%&ndash;<div class="table100-head js-pscroll">
             <table>
                 <th class="cell100 column1" colspan="5">
                     <table cellpadding="5" cellspacing="5">
@@ -115,9 +115,9 @@
                     </table>
                 </th>
             </table>
-        </div>
+        </div>&ndash;%&gt;
     </div>
-</div>
+</div>--%>
 <div class="limiter">
 
     <div class="container-table100" style="background-image: url('images/bg-registration-form-4.png');">
@@ -132,32 +132,15 @@
                         <tr class="row100 head">
 
                             <th class="cell100 column1" style="cursor: pointer">
-                                <c:set var="orders" scope="session" value="${order+1}"/>
-                                <a href="Dashboard?pageId=1&sort=userName&order=${orders}">User Name
-                                    <i class="zmdi zmdi-unfold-more"></i>
-                                </a>
+                                ID
                             </th>
                             <th class="cell100 column2" style="cursor: pointer">
-                                <a href="Dashboard?pageId=1&sort=id&order=${orders}">ID
-                                    <i class="zmdi zmdi-unfold-more"></i>
-                                </a>
+                               Visted URL
                             </th>
                             <th class="cell100 column3" style="cursor: pointer">
-                                <a href="Dashboard?pageId=1&sort=nic&order=${orders}">NIC
-                                    <i class="zmdi zmdi-unfold-more"></i>
-                                </a>
+                                Time Stamp
                             </th>
-                            <th class="cell100 column4" style="cursor: pointer">
-                                <a href="Dashboard?pageId=1&sort=mobileNumber&order=${orders}">Mobile Number
-                                    <i class="zmdi zmdi-unfold-more"></i>
-                                </a>
-                            </th>
-                            <th class="cell100 column5" style="cursor: pointer">
-                                <a href="Dashboard?pageId=1&sort=gender&order=${orders}">Gender
-                                    <i class="zmdi zmdi-unfold-more"></i>
-                                </a>
-                            </th>
-                            <th class="cell100 column6" style="cursor: default">Edit/Delete</th>
+
                         </tr>
                         </thead>
                     </table>
@@ -172,19 +155,9 @@
                         <c:forEach var="listOfAcc" items="${listOfAcc}">
 
                             <tr class="row100 body">
-                                <td class="cell100 column1"><c:out value="${listOfAcc.userName}"/></td>
-                                <td class="cell100 column2"><c:out value="${listOfAcc.id}"/></td>
-                                <td class="cell100 column3"><c:out value="${listOfAcc.nic}"/></td>
-                                <td class="cell100 column4"><c:out value="${listOfAcc.mobileNumber}"/></td>
-                                <td class="cell100 column5"><c:out value="${listOfAcc.gender}"/></td>
-                                <td class="cell100 column6">
-                                    <a class="btn btn-sm btn-success" href="Edit?id=<c:out value="${listOfAcc.id}"/>"><i
-                                            class="zmdi zmdi-edit"></i> Edit</a><br/><br/>
-                                    <a class="btn btn-sm btn-danger"
-                                       href="Delete?id=<c:out value="${listOfAcc.id}"/>"><i
-                                            class="zmdi zmdi-delete"></i> Delete</a>
-                                </td>
-
+                                <td class="cell100 column1"><c:out value="${listOfAcc.id}"/></td>
+                                <td class="cell100 column2"><c:out value="${listOfAcc.uri}"/></td>
+                                <td class="cell100 column3"><c:out value="${listOfAcc.timeStamp}"/></td>
                             </tr>
 
                         </c:forEach>
@@ -195,7 +168,7 @@
                 </div>
 
                 <%--pagination--%>
-                <div class="center">
+             <%--   <div class="center">
                     <div class="page">
                         <table>
                             <th class="" colspan="5">
@@ -220,7 +193,7 @@
                         </table>
                     </div>
 
-                </div>
+                </div>--%>
 
                 <%--logout buttons--%>
                 <div class="table100-body js-pscroll">
@@ -231,46 +204,12 @@
                                     <%-- <a href="/DownloadPDF">Download to PDF</a>
                                      <a href="/DownloadExcel">Download to Excel</a>--%>
                                     <td>
-                                        <form action="DownloadPDF" method="get">
-                                            <input type="hidden" name="search-bar"
-                                                   value="<c:out value="${searchValue}"/>"/>
-                                            <button>Download PDF
-                                                <i class="zmdi zmdi-download"></i>
+                                        <form action="Redirect" method="get">
+                                            <button>Home
+                                                <i class="zmdi zmdi-home"></i>
                                             </button>
                                         </form>
                                     </td>
-                                    <td>
-                                        <form action="DownloadExcel" method="get">
-                                            <input type="hidden" name="search-bar"
-                                                   value="<c:out value="${searchValue}"/>"/>
-                                            <button>Download Excel
-                                                <i class="zmdi zmdi-download"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-
-                                    <td>
-                                        <form action="Upload" method="post" enctype="multipart/form-data">
-                                            <input id="fileAttachment" type="file" name="fileUpload"
-                                                   multiple="multiple"/>
-                                            <button>Upload<i class="zmdi zmdi-upload"></i>
-                                            </button>
-                                        </form>
-
-                                    </td>
-                                    <td>
-                                        <form action="Record" method="get" >
-                                            <button>Track Record<i class="zmdi zmdi-album"></i>
-                                            </button>
-                                        </form>
-                                    </td>
-                                        <td>
-                                            <form action="Logout" method="get">
-                                                <button>LogOut
-                                                    <i class="zmdi zmdi-power-off"></i>
-                                                </button>
-                                            </form>
-                                        </td>
                                 </tr>
                             </table>
                         </th>
@@ -352,3 +291,4 @@
 
 </body>
 </html>
+

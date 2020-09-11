@@ -56,6 +56,14 @@
         <servlet-name>ChangePasswordServlet</servlet-name>
         <servlet-class>com.controller.ChangePasswordServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>TrackRecordServlet</servlet-name>
+        <servlet-class>com.controller.TrackRecordServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TrackRedirectServlet</servlet-name>
+        <servlet-class>com.controller.TrackRedirectServlet</servlet-class>
+    </servlet>
 
 
     <servlet-mapping>
@@ -109,6 +117,14 @@
     <servlet-mapping>
         <servlet-name>ChangePasswordServlet</servlet-name>
         <url-pattern>/ChangePasswordServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TrackRecordServlet</servlet-name>
+        <url-pattern>/Record</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TrackRedirectServlet</servlet-name>
+        <url-pattern>/Redirect</url-pattern>
     </servlet-mapping>
 
 
