@@ -44,7 +44,7 @@ public class JspFilter implements Filter {
                 !request.getRequestURL().toString().equalsIgnoreCase("http://localhost:8080/CRUD/Login")
         ){
             userId = (Integer) ((HttpServletRequest) req).getSession().getAttribute("id");
-            System.out.println("ID : "+ userId);
+
         }
 
         if (userId!=null){
@@ -56,11 +56,6 @@ public class JspFilter implements Filter {
             auditModel.setUri(clientURI);
             String time = new Date().toString();
             auditModel.setTimeStamp(time);
-
-            System.out.println(auditModel.getId());
-            System.out.println(auditModel.getTimeStamp());
-            System.out.println(auditModel.getUri());
-
             daoAuditTrace.sendAudoitTraceToDb(auditModel);
             chain.doFilter(req, resp);
         }else {
@@ -73,9 +68,6 @@ public class JspFilter implements Filter {
             String time = new Date().toString();
             auditModel.setTimeStamp(time);
 
-            System.out.println(auditModel.getId());
-            System.out.println(auditModel.getTimeStamp());
-            System.out.println(auditModel.getUri());
             //daoAuditTrace.sendAudoitTraceToDb(auditModel);
             chain.doFilter(req, resp);
         }
