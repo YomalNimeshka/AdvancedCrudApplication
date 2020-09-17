@@ -85,14 +85,13 @@
             <div class="form-wrapper">
                 <div class="tooltip">
                     <input type="password" placeholder="Password" name="password" class="form-control"
-                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}" required>
+                            required>
                     <i class="zmdi zmdi-lock"></i>
-                    <span class="tooltiptext">Need to have atleast 1 UpperCase, 1 Lower case, 1 number and a character with 8.</span>
                 </div>
             </div>
             <div class="form-wrapper">
                 <input type="password" placeholder="Confirm Password" name="confirmPassword" class="form-control"
-                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*])(?=.*[A-Z]).{8,}" required>
+                       required>
                 <i class="zmdi zmdi-lock"></i>
             </div>
             <div class="form-wrapper">

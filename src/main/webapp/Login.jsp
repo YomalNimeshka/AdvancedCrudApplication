@@ -81,7 +81,7 @@
         <div class="image-holder">
             <img src="images/registration-form-3.jfif" alt="">
         </div>
-        <form action="Login" method="post" onsubmit="return checkform(this);">
+        <form action="Login" method="post" onsubmit="return checkform(this);" autocomplete="off">
             <h3>Login</h3>
             <%--<div class="form-group">
                 <input type="text" placeholder="First Name" class="form-control">
